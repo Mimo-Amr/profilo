@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UNKNOWN — Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ── Background Layer ── -->
+  <div id="bg-layer">
+    <canvas id="bg-canvas"></canvas>
+    <video id="bg-video" autoplay loop muted playsinline></video>
+    <div id="bg-photo-layer"></div>
+    <div id="bg-overlay"></div>
+  </div>
+
+  <!-- ── Main Page ── -->
+  <main id="page">
+
+    <!-- Hero -->
+    <section id="hero">
+      <div id="avatar-wrap">
+        <div id="avatar-ring"></div>
+        <img id="avatar" src="https://github.com/mimo-amr.png" alt="UNKNOWN"/>
+      </div>
+      <h1 id="display-name">UNKNOWN</h1>
+      <p id="tagline">// github.com/mimo-amr</p>
+      <div id="stats-row">
+        <div class="stat-pill" id="stat-repos"><b>—</b><span>repos</span></div>
+        <div class="stat-pill" id="stat-followers"><b>—</b><span>followers</span></div>
+        <div class="stat-pill" id="stat-following"><b>—</b><span>following</span></div>
+      </div>
+    </section>
+
+    <!-- Repositories -->
+    <section id="repos-section">
+      <p class="section-label">Repositories</p>
+      <div id="repos-grid"></div>
+    </section>
+
+    <!-- License -->
+    <section id="license-section">
+      <p class="section-label">License</p>
+      <div id="license-card" class="glass">
+        <div id="license-icon">📄</div>
+        <div>
+          <h3 id="license-name">Loading…</h3>
+          <p id="license-body">Fetching license data from GitHub…</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Spotify Bar ── -->
+  <div id="spotify-bar" class="glass">
+    <img id="spotify-art" src="" alt="art"/>
+    <div id="spotify-svg">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="11" fill="#1DB954"/>
+        <path d="M16.8 16.8C14.4 15.2 11.1 14.9 7.3 15.8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M17.9 13.5C14.8 11.6 10.5 11.2 6.7 12.3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M19 9.9C15.2 7.7 9.6 7.7 5.8 9.2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div id="spotify-info">
+      <div id="spotify-track">Not Playing</div>
+      <div id="spotify-artist">Spotify</div>
+      <div id="progress-track"><div id="progress-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ── Admin Trigger ── -->
+  <button id="admin-trigger" title="Admin Panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+    </svg>
+  </button>
+
+  <!-- ── Admin Modal ── -->
+  <div id="admin-modal">
+    <div id="admin-panel" class="glass">
+      <button id="admin-close">✕</button>
+      <h2>Admin Panel</h2>
+      <p class="subtitle">// SHA-256 encrypted · secure credentials</p>
+
+      <!-- Login View -->
+      <div id="login-view">
+        <div class="field-group">
+          <label class="field-label">USERNAME</label>
+          <input id="adm-user" class="glass-input" type="text" placeholder="username" autocomplete="off"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">PASSWORD</label>
+          <input id="adm-pass" class="glass-input" type="password" placeholder="••••••••"/>
+        </div>
+        <p id="login-error">✕ Invalid credentials</p>
+        <button class="glass-btn full-w" id="login-btn">UNLOCK →</button>
+      </div>
+
+      <!-- Settings View -->
+      <div id="settings-view">
+
+        <div class="setting-group">
+          <h4>🖼 Background</h4>
+          <div id="bg-options">
+            <button class="bg-opt active" data-mode="particles">✦ Particles</button>
+            <button class="bg-opt" data-mode="video">▶ Video</button>
+            <button class="bg-opt" data-mode="photo">📷 Photo</button>
+          </div>
+          <div id="bg-sub"></div>
+        </div>
+
+        <div class="setting-group">
+          <h4>🎵 Now Playing</h4>
+          <div class="field-group">
+            <label class="field-label">TRACK NAME</label>
+            <input id="edit-track" class="glass-input" type="text" placeholder="Song title"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label">ARTIST</label>
+            <input id="edit-artist" class="glass-input" type="text" placeholder="Artist name"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label">ALBUM ART URL</label>
+            <input id="edit-art" class="glass-input" type="text" placeholder="https://…"/>
+          </div>
+          <button class="glass-btn full-w" id="update-spotify-btn">UPDATE SPOTIFY</button>
+        </div>
+
+        <div class="setting-group">
+          <h4>✏ Display Name</h4>
+          <div class="field-group">
+            <input id="edit-name" class="glass-input" type="text" placeholder="e.g. UNKNOWN"/>
+          </div>
+          <button class="glass-btn full-w" id="update-name-btn">APPLY NAME</button>
+        </div>
+
+        <div class="setting-group">
+          <h4>🔐 Change Credentials</h4>
+          <div class="field-group">
+            <label class="field-label">NEW USERNAME</label>
+            <input id="new-user" class="glass-input" type="text" placeholder="New username"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label">NEW PASSWORD</label>
+            <input id="new-pass" class="glass-input" type="password" placeholder="New password"/>
+          </div>
+          <button class="glass-btn full-w" id="save-creds-btn">SAVE CREDENTIALS</button>
+        </div>
+
+        <button class="ghost-btn" id="logout-btn">↩ Logout</button>
+
+      </div><!-- /settings-view -->
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
