@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UNKNOWN — Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Background -->
+  <div id="bg-layer">
+    <canvas id="bg-canvas"></canvas>
+    <video id="bg-video" autoplay loop muted playsinline></video>
+    <div id="bg-photo-layer"></div>
+    <div id="bg-overlay"></div>
+  </div>
+
+  <!-- Hidden file pickers — opened programmatically -->
+  <input type="file" id="picker-video" accept="video/*"  style="display:none"/>
+  <input type="file" id="picker-photo" accept="image/*"  style="display:none"/>
+
+  <!-- Page -->
+  <main id="page">
+
+    <section id="hero">
+      <div id="avatar-wrap">
+        <div id="avatar-ring"></div>
+        <img id="avatar" src="https://github.com/mimo-amr.png" alt="avatar"/>
+      </div>
+      <h1 id="display-name">UNKNOWN</h1>
+      <p id="tagline">// github.com/mimo-amr</p>
+      <div id="stats-row">
+        <div class="stat-pill" id="stat-repos"><b>—</b><span>repos</span></div>
+        <div class="stat-pill" id="stat-followers"><b>—</b><span>followers</span></div>
+        <div class="stat-pill" id="stat-following"><b>—</b><span>following</span></div>
+      </div>
+    </section>
+
+    <section id="repos-section">
+      <p class="section-label">Repositories</p>
+      <div id="repos-grid"></div>
+    </section>
+
+    <section id="license-section">
+      <p class="section-label">License</p>
+      <div id="license-card" class="glass">
+        <div id="license-icon">📄</div>
+        <div>
+          <h3 id="license-name">Loading…</h3>
+          <p id="license-body">Fetching from GitHub…</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Spotify Bar — hidden until music plays -->
+  <div id="spotify-bar" class="glass sp-hidden">
+    <img id="sp-art" src="" alt=""/>
+    <div id="sp-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="11" fill="#1DB954"/>
+        <path d="M16.8 16.8C14.4 15.2 11.1 14.9 7.3 15.8"  stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M17.9 13.5C14.8 11.6 10.5 11.2 6.7 12.3"  stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M19 9.9C15.2 7.7 9.6 7.7 5.8 9.2"         stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div id="sp-info">
+      <div id="sp-track">—</div>
+      <div id="sp-artist">—</div>
+      <div id="sp-progress-wrap"><div id="sp-progress-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Admin button -->
+  <button id="admin-trigger" title="Admin">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+    </svg>
+  </button>
+
+  <!-- Admin Modal -->
+  <div id="admin-modal">
+    <div id="admin-panel" class="glass">
+      <button id="admin-close">✕</button>
+      <h2>Admin Panel</h2>
+      <p class="subtitle">// SHA-256 encrypted · all changes apply live</p>
+
+      <!-- LOGIN -->
+      <div id="login-view">
+        <div class="field-group">
+          <label class="field-label">USERNAME</label>
+          <input id="adm-user" class="glass-input" type="text" autocomplete="off" placeholder="username"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">PASSWORD</label>
+          <input id="adm-pass" class="glass-input" type="password" placeholder="••••••••"/>
+        </div>
+        <p id="login-error">✕ Invalid credentials</p>
+        <button class="glass-btn full-w" id="login-btn">UNLOCK →</button>
+      </div>
+
+      <!-- SETTINGS -->
+      <div id="settings-view">
+
+        <!-- Background -->
+        <div class="setting-group">
+          <h4>🖼 Background</h4>
+          <div id="bg-options">
+            <button class="bg-opt active" data-mode="particles">✦ Particles</button>
+            <button class="bg-opt"        data-mode="video">▶ Video</button>
+            <button class="bg-opt"        data-mode="photo">📷 Photo</button>
+          </div>
+          <div id="bg-sub"></div>
+        </div>
+
+        <!-- Spotify -->
+        <div class="setting-group">
+          <h4>🎵 Spotify Live</h4>
+          <p class="hint">
+            1 · Go to <b>developer.spotify.com</b>, create an App, copy the <b>Client ID</b>.<br>
+            2 · Add this page's URL as a <b>Redirect URI</b> in your Spotify App settings.<br>
+            3 · Paste below and click Connect — the bar appears only when music is playing.
+          </p>
+          <div class="field-group" style="margin-top:14px">
+            <label class="field-label">CLIENT ID</label>
+            <input id="sp-client-id" class="glass-input" type="text" placeholder="Spotify App Client ID"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label">REDIRECT URI</label>
+            <input id="sp-redirect" class="glass-input" type="text" placeholder="http://localhost/profile/index.html"/>
+          </div>
+          <button class="glass-btn full-w" id="sp-connect-btn">CONNECT SPOTIFY →</button>
+          <div id="sp-conn-status" class="sp-status" style="display:none">● Connected · polling every 5 s</div>
+          <button class="ghost-btn" id="sp-disconnect-btn" style="display:none;margin-top:8px">Disconnect Spotify</button>
+        </div>
+
+        <!-- Display Name -->
+        <div class="setting-group">
+          <h4>✏ Display Name</h4>
+          <input id="edit-name" class="glass-input" type="text" placeholder="e.g. UNKNOWN"/>
+          <button class="glass-btn full-w" id="update-name-btn" style="margin-top:8px">APPLY LIVE</button>
+        </div>
+
+        <!-- Credentials -->
+        <div class="setting-group">
+          <h4>🔐 Change Credentials</h4>
+          <div class="field-group">
+            <label class="field-label">NEW USERNAME</label>
+            <input id="new-user" class="glass-input" type="text" placeholder="New username"/>
+          </div>
+          <div class="field-group">
+            <label class="field-label">NEW PASSWORD</label>
+            <input id="new-pass" class="glass-input" type="password" placeholder="New password"/>
+          </div>
+          <button class="glass-btn full-w" id="save-creds-btn">SAVE CREDENTIALS</button>
+        </div>
+
+        <button class="ghost-btn" id="logout-btn">↩ Logout</button>
+      </div><!-- /settings-view -->
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
