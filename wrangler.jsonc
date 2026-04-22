@@ -12,3 +12,12 @@
     "nodejs_compat"
   ]
 }
+{
+  "d1_databases": [
+    {
+      "binding": "DB", 
+      "database_name": "your-database-name",
+      "database_id": "your-database-id"
+    }
+  ]
+}
