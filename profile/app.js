@@ -3,7 +3,7 @@
 /* ═══════════════════════════════════════════════════════════
    CONFIG — change WORKER_URL to your deployed worker URL
 ═══════════════════════════════════════════════════════════ */
-const WORKER_URL = 'https://profilo.amrismailsakr97.workers.dev'; // ← your worker URL
+const WORKER_URL = ''; // ← your worker URL
 const GITHUB_USER = 'mimo-amr';
 
 /* ═══════════════════════════════════════════════════════════
