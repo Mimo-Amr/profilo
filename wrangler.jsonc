@@ -10,5 +10,12 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "profilo-db",
+      "database_id": "2e3c222e-765d-49de-a21c-bc166d6676b6"
+    }
   ]
 }
