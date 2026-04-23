@@ -16,8 +16,8 @@
   "d1_databases": [
     {
       "binding": "DB", 
-      "database_name": "your-database-name",
-      "database_id": "your-database-id"
+      "database_name": "profilo",
+      "database_id": "0e1a598b-b57d-4a11-b036-92b3fc6a2632"
     }
   ]
 }
