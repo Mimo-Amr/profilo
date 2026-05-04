@@ -1,0 +1,15 @@
+# Disable ALL caching for JS and CSS — forces browser and Cloudflare edge
+# to always fetch fresh files. Without this, old app.js with buggy code
+# gets served from Cloudflare's edge even after GitHub pushes.
+
+/app.js
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Pragma: no-cache
+
+/style.css
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Pragma: no-cache
+
+/index.html
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Pragma: no-cache
